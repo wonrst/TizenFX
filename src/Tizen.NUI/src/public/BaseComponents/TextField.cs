@@ -21,6 +21,7 @@ using System;
 using System.Globalization;
 using System.ComponentModel;
 using Tizen.NUI.Binding;
+using System.Diagnostics;
 
 namespace Tizen.NUI.BaseComponents
 {
@@ -37,6 +38,10 @@ namespace Tizen.NUI.BaseComponents
         private TextFieldSelectorData selectorData;
         private float fontSizeScale = 1.0f;
         private bool hasFontSizeChangedCallback = false;
+        private bool hasPropertyChangedCallback = false;
+        private View clearButton = null;
+        private View passwordButton = null;
+        private bool passwordRevealed = false;
 
         static TextField() { }
 
@@ -102,6 +107,272 @@ namespace Tizen.NUI.BaseComponents
             ExceedPolicyClip
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool EnableClearButton
+        {
+            get => clearButton != null;
+            set
+            {
+                if (EnableClearButton == value) return;
+
+                if (value) SetClearButton();
+                else UnsetClearButton();
+            }
+        }
+
+        private void SetClearButton()
+        {
+            Debug.Assert(clearButton == null);
+
+            clearButton = new View()
+            {
+                BackgroundColor = new Color(0.5f, 0.5f, 0.5f, 1.0f),
+                Size = new Size(20, 20),
+                CornerRadius = 10.0f,
+                PositionUsesPivotPoint = true,
+                Focusable = false,
+            };
+
+            clearButton.TouchEvent += OnClearTouch;
+            FocusGained += OnFocusGained;
+            FocusLost += OnFocusLost;
+            TextChanged += OnTextChanged;
+            addPropertyChangedCallback();
+
+            UpdateSuffix();
+            UpdateClearButtonVisibility();
+
+            Add(clearButton);
+        }
+
+        private void UnsetClearButton()
+        {
+            Debug.Assert(clearButton != null);
+
+            FocusGained -= OnFocusGained;
+            FocusLost -= OnFocusLost;
+            TextChanged -= OnTextChanged;
+
+            Remove(clearButton);
+            clearButton.Dispose();
+            clearButton = null;
+
+            if (!EnablePasswordButton) removePropertyChangedCallback();
+
+            UpdateSuffix();
+        }
+
+        private bool OnClearTouch(object sender, View.TouchEventArgs args)
+        {
+            if (args.Touch.GetState(0) == PointStateType.Down) Text = "";
+            return false;
+        }
+
+        private void OnFocusGained(object sender, EventArgs args)
+        {
+            Debug.Assert(clearButton != null);
+            UpdateClearButtonVisibility();
+        }
+
+        private void OnFocusLost(object sender, EventArgs args)
+        {
+            Debug.Assert(clearButton != null);
+            clearButton.Hide();
+        }
+
+        private void OnTextChanged(object sender, EventArgs args)
+        {
+            Debug.Assert(clearButton != null);
+            UpdateClearButtonVisibility();
+        }
+
+        private void UpdateClearButtonVisibility()
+        {
+            if (!KeyInputFocus || String.IsNullOrEmpty(Text)) clearButton.Hide();
+            else clearButton.Show();
+        }
+
+        private void UpdateClearButton()
+        {
+            if (!clearButton || !EnableClearButton) return;
+
+            float passwordButtonSize = 0;
+            if (EnablePasswordButton) passwordButtonSize = passwordButton.Size.Width + 10;
+            if (LayoutDirection == ViewLayoutDirectionType.LTR)
+            {
+                clearButton.PivotPoint = NUI.PivotPoint.CenterRight;
+                clearButton.ParentOrigin = NUI.ParentOrigin.CenterRight;
+                clearButton.Position = new Position(- Padding.End - 5 - passwordButtonSize, 0);
+            }
+            else
+            {
+                clearButton.PivotPoint = NUI.PivotPoint.CenterLeft;
+                clearButton.ParentOrigin = NUI.ParentOrigin.CenterLeft;
+                clearButton.Position = new Position(Padding.End + 5 + passwordButtonSize, 0);
+            }
+        }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool EnablePasswordButton
+        {
+            get => passwordButton != null;
+            set
+            {
+                if (EnablePasswordButton == value) return;
+
+                if (value) SetPasswordButton();
+                else UnsetPasswordButton();
+            }
+        }
+
+        private void SetPasswordButton()
+        {
+            Debug.Assert(passwordButton == null);
+
+            passwordButton = new View()
+            {
+                BackgroundColor = new Color(1.0f, 0.0f, 0.5f, 1.0f),
+                Size = new Size(20, 20),
+                CornerRadius = 10.0f,
+                PositionUsesPivotPoint = true,
+                Focusable = false,
+            };
+
+            passwordButton.TouchEvent += OnPasswordTouch;
+            addPropertyChangedCallback();
+
+            UpdateSuffix();
+            PasswordRevealed = false;
+
+            Add(passwordButton);
+        }
+
+        private void UnsetPasswordButton()
+        {
+            Debug.Assert(passwordButton != null);
+
+            Remove(passwordButton);
+            passwordButton.Dispose();
+            passwordButton = null;
+
+            HiddenInputSettings = new PropertyMap();
+            PasswordRevealed = true;
+
+            if (!EnableClearButton) removePropertyChangedCallback();
+
+            UpdateSuffix();
+        }
+
+        private void UpdatePasswordButton()
+        {
+            if (!passwordButton || !EnablePasswordButton) return;
+
+            if (LayoutDirection == ViewLayoutDirectionType.LTR)
+            {
+                passwordButton.PivotPoint = NUI.PivotPoint.CenterRight;
+                passwordButton.ParentOrigin = NUI.ParentOrigin.CenterRight;
+                passwordButton.Position = new Position(- Padding.End - 5, 0);
+            }
+            else
+            {
+                passwordButton.PivotPoint = NUI.PivotPoint.CenterLeft;
+                passwordButton.ParentOrigin = NUI.ParentOrigin.CenterLeft;
+                passwordButton.Position = new Position(Padding.End + 5, 0);
+            }
+        }
+
+        private bool PasswordRevealed
+        {
+            get => passwordRevealed;
+            set
+            {
+                passwordRevealed = value;
+                if (passwordRevealed) RevealPassword();
+                else HidePassword();
+
+                Text = Text;
+            }
+        }
+
+        private void RevealPassword()
+        {
+            var map = new PropertyMap();
+            map.Add(HiddenInputProperty.Mode, new PropertyValue((int)HiddenInputModeType.HideNone));
+            HiddenInputSettings = map;
+        }
+
+        private void HidePassword()
+        {
+            var map = new PropertyMap();
+            map.Add(HiddenInputProperty.Mode, new PropertyValue((int)HiddenInputModeType.ShowLastCharacter));
+            map.Add(HiddenInputProperty.ShowLastCharacterDuration, new PropertyValue(500));
+            HiddenInputSettings = map;
+        }
+
+        private bool OnPasswordTouch(object sender, View.TouchEventArgs args)
+        {
+            if (args.Touch.GetState(0) == PointStateType.Down)
+            {
+                PasswordRevealed = !PasswordRevealed;
+            }
+            return false;
+        }
+
+        private void UpdateSuffix()
+        {
+            float suffix = 0;
+            if (EnablePasswordButton) suffix += passwordButton.Size.Width + 10;
+            if (EnableClearButton) suffix += clearButton.Size.Width + 10;
+
+            // resize inner padding to fit the buttons size.
+            if (suffix != InnerPadding.End) InnerPadding = new Extents(0, (ushort)suffix, 0, 0);
+
+            UpdateClearButton();
+            UpdatePasswordButton();
+        }
+
+        private void OnPropertyChanged(object sender, global::System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Padding")
+            {
+                UpdateSuffix();
+            }
+        }
+
+        private void addPropertyChangedCallback()
+        {
+            if (!hasPropertyChangedCallback)
+            {
+                try
+                {
+                    PropertyChanged += OnPropertyChanged;
+                    hasPropertyChangedCallback = true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("{0} Exception caught.", e);
+                    hasPropertyChangedCallback = false;
+                }
+            }
+        }
+
+        private void removePropertyChangedCallback()
+        {
+            if (hasPropertyChangedCallback)
+            {
+                try
+                {
+                    PropertyChanged -= OnPropertyChanged;
+                    hasPropertyChangedCallback = false;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("{0} Exception caught.", e);
+                    hasPropertyChangedCallback = true;
+                }
+            }
+        }
+
         /// <summary>
         /// The TranslatableText property.<br />
         /// The text can set the SID value.<br />
@@ -136,6 +407,24 @@ namespace Tizen.NUI.BaseComponents
                 }
                 textFieldTextSid = value;
                 Text = SetTranslatable(textFieldTextSid);
+                NotifyPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Inner padding in text control.
+        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public Extents InnerPadding
+        {
+            get
+            {
+                Extents temp = (Extents)GetValue(InnerPaddingProperty);
+                return new Extents(temp.Start, temp.End, temp.Top, temp.Bottom);
+            }
+            set
+            {
+                SetValue(InnerPaddingProperty, value);
                 NotifyPropertyChanged();
             }
         }
@@ -1456,6 +1745,7 @@ namespace Tizen.NUI.BaseComponents
             }
 
             removeFontSizeChangedCallback();
+            removePropertyChangedCallback();
 
             if (type == DisposeTypes.Explicit)
             {
@@ -1627,6 +1917,7 @@ namespace Tizen.NUI.BaseComponents
             internal static readonly int EnableEditing = Interop.TextField.EnableEditingGet();
             internal static readonly int PrimaryCursorPosition = Interop.TextField.PrimaryCursorPositionGet();
             internal static readonly int FontSizeScale = Interop.TextField.FontSizeScaleGet();
+            internal static readonly int InnerPadding = Interop.TextField.InnerPaddingGet();
         }
 
         internal class InputStyle

@@ -256,6 +256,9 @@ namespace Tizen.NUI
 
             [global::System.Runtime.InteropServices.DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_TextField_Property_FONT_SIZE_SCALE_get")]
             public static extern int FontSizeScaleGet();
+
+            [global::System.Runtime.InteropServices.DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_TextField_Property_INNER_PADDING_get")]
+            public static extern int InnerPaddingGet();
         }
     }
 }

@@ -990,6 +990,23 @@ namespace Tizen.NUI.BaseComponents
             return temp;
         }));
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public static readonly BindableProperty InnerPaddingProperty = BindableProperty.Create(nameof(TextField.InnerPadding), typeof(Extents), typeof(TextField), null, propertyChanged: (BindableProperty.BindingPropertyChangedDelegate)((bindable, oldValue, newValue) =>
+        {
+            var textField = (TextField)bindable;
+            if (newValue != null)
+            {
+                Tizen.NUI.Object.SetProperty((System.Runtime.InteropServices.HandleRef)textField.SwigCPtr, TextField.Property.InnerPadding, new Tizen.NUI.PropertyValue((Extents)newValue));
+            }
+        }),
+        defaultValueCreator: (BindableProperty.CreateDefaultValueDelegate)((bindable) =>
+        {
+            var textField = (TextField)bindable;
+            Extents temp = new Extents(0, 0, 0, 0);
+            Tizen.NUI.Object.GetProperty((System.Runtime.InteropServices.HandleRef)textField.SwigCPtr, TextField.Property.InnerPadding).Get(temp);
+            return temp;
+        }));
+
         #region Selectors
         internal static readonly BindableProperty TranslatableTextSelectorProperty = BindableProperty.Create("TranslatableTextSelector", typeof(Selector<string>), typeof(TextField), null, propertyChanged: (bindable, oldValue, newValue) =>
         {
