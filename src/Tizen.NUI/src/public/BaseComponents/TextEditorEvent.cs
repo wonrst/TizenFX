@@ -36,6 +36,9 @@ namespace Tizen.NUI.BaseComponents
         private EventHandler<MaxLengthReachedEventArgs> _textEditorMaxLengthReachedEventHandler;
         private MaxLengthReachedCallbackDelegate _textEditorMaxLengthReachedCallbackDelegate;
 
+        private EventHandler<AnchorTouchedEventArgs> _textEditorAnchorTouchedEventHandler;
+        private AnchorTouchedCallbackDelegate _textEditorAnchorTouchedCallbackDelegate;
+
         [UnmanagedFunctionPointer(CallingConvention.StdCall)]
         private delegate void TextChangedCallbackDelegate(IntPtr textEditor);
 
@@ -44,6 +47,9 @@ namespace Tizen.NUI.BaseComponents
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall)]
         private delegate void MaxLengthReachedCallbackDelegate(IntPtr textEditor);
+
+        [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+        private delegate void AnchorTouchedCallbackDelegate(IntPtr textEditor, IntPtr href, uint hrefLength);
 
         /// <summary>
         /// An event for the TextChanged signal which can be used to subscribe or unsubscribe the event handler
@@ -123,6 +129,30 @@ namespace Tizen.NUI.BaseComponents
             }
         }
 
+        /// <summary>
+        /// The AnchorTouched event.
+        /// </summary>
+        public event EventHandler<AnchorTouchedEventArgs> AnchorTouched
+        {
+            add
+            {
+                if (_textEditorAnchorTouchedEventHandler == null)
+                {
+                    _textEditorAnchorTouchedCallbackDelegate = (OnAnchorTouched);
+                    AnchorTouchedSignal().Connect(_textEditorAnchorTouchedCallbackDelegate);
+                }
+                _textEditorAnchorTouchedEventHandler += value;
+            }
+            remove
+            {
+                _textEditorAnchorTouchedEventHandler -= value;
+                if (_textEditorAnchorTouchedEventHandler == null && AnchorTouchedSignal().Empty() == false)
+                {
+                    AnchorTouchedSignal().Disconnect(_textEditorAnchorTouchedCallbackDelegate);
+                }
+            }
+        }
+
         internal TextEditorSignal TextChangedSignal()
         {
             TextEditorSignal ret = new TextEditorSignal(Interop.TextEditor.TextChangedSignal(SwigCPtr), false);
@@ -140,6 +170,13 @@ namespace Tizen.NUI.BaseComponents
         internal TextEditorSignal MaxLengthReachedSignal()
         {
             TextEditorSignal ret = new TextEditorSignal(Interop.TextEditor.MaxLengthReachedSignal(SwigCPtr), false);
+            if (NDalicPINVOKE.SWIGPendingException.Pending) throw NDalicPINVOKE.SWIGPendingException.Retrieve();
+            return ret;
+        }
+
+        internal TextEditorSignal AnchorTouchedSignal()
+        {
+            TextEditorSignal ret = new TextEditorSignal(Interop.TextEditor.AnchorTouchedSignal(SwigCPtr), false);
             if (NDalicPINVOKE.SWIGPendingException.Pending) throw NDalicPINVOKE.SWIGPendingException.Retrieve();
             return ret;
         }
@@ -187,6 +224,22 @@ namespace Tizen.NUI.BaseComponents
             {
                 //here we send all data to user event handlers
                 _textEditorMaxLengthReachedEventHandler(this, e);
+            }
+        }
+
+        private void OnAnchorTouched(IntPtr textEditor, IntPtr href, uint hrefLength)
+        {
+            AnchorTouchedEventArgs e = new AnchorTouchedEventArgs();
+
+            // Populate all members of "e" (AnchorTouchedEventArgs) with real data
+            e.TextEditor = Registry.GetManagedBaseHandleFromNativePtr(textEditor) as TextEditor;
+            e.Href = Marshal.PtrToStringAnsi(href);
+            e.HrefLength = hrefLength;
+
+            if (_textEditorAnchorTouchedEventHandler != null)
+            {
+                //here we send all data to user event handlers
+                _textEditorAnchorTouchedEventHandler(this, e);
             }
         }
 
@@ -280,6 +333,59 @@ namespace Tizen.NUI.BaseComponents
                 set
                 {
                     _textEditor = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// The AnchorChanged event arguments.
+        /// </summary>
+        public class AnchorTouchedEventArgs : EventArgs
+        {
+            private TextEditor _textEditor;
+            private string _href;
+            private uint _hrefLength;
+
+            /// <summary>
+            /// TextEditor.
+            /// </summary>
+            public TextEditor TextEditor
+            {
+                get
+                {
+                    return _textEditor;
+                }
+                set
+                {
+                    _textEditor = value;
+                }
+            }
+            /// <summary>
+            /// Anchor href.
+            /// </summary>
+            public string Href
+            {
+                get
+                {
+                    return _href;
+                }
+                set
+                {
+                    _href = value;
+                }
+            }
+            /// <summary>
+            /// Anchor href length.
+            /// </summary>
+            public uint HrefLength
+            {
+                get
+                {
+                    return _hrefLength;
+                }
+                set
+                {
+                    _hrefLength = value;
                 }
             }
         }

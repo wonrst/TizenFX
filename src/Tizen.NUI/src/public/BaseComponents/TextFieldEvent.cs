@@ -30,12 +30,17 @@ namespace Tizen.NUI.BaseComponents
         private TextChangedCallbackDelegate _textFieldTextChangedCallbackDelegate;
         private EventHandler<MaxLengthReachedEventArgs> _textFieldMaxLengthReachedEventHandler;
         private MaxLengthReachedCallbackDelegate _textFieldMaxLengthReachedCallbackDelegate;
+        private EventHandler<AnchorTouchedEventArgs> _textFieldAnchorTouchedEventHandler;
+        private AnchorTouchedCallbackDelegate _textFieldAnchorTouchedCallbackDelegate;
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall)]
         private delegate void TextChangedCallbackDelegate(IntPtr textField);
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall)]
         private delegate void MaxLengthReachedCallbackDelegate(IntPtr textField);
+
+        [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+        private delegate void AnchorTouchedCallbackDelegate(IntPtr textField, IntPtr href, uint hrefLength);
 
         /// <summary>
         /// The TextChanged event.
@@ -87,6 +92,30 @@ namespace Tizen.NUI.BaseComponents
             }
         }
 
+        /// <summary>
+        /// The AnchorTouched event.
+        /// </summary>
+        public event EventHandler<AnchorTouchedEventArgs> AnchorTouched
+        {
+            add
+            {
+                if (_textFieldAnchorTouchedEventHandler == null)
+                {
+                    _textFieldAnchorTouchedCallbackDelegate = (OnAnchorTouched);
+                    AnchorTouchedSignal().Connect(_textFieldAnchorTouchedCallbackDelegate);
+                }
+                _textFieldAnchorTouchedEventHandler += value;
+            }
+            remove
+            {
+                _textFieldAnchorTouchedEventHandler -= value;
+                if (_textFieldAnchorTouchedEventHandler == null && AnchorTouchedSignal().Empty() == false)
+                {
+                    AnchorTouchedSignal().Disconnect(_textFieldAnchorTouchedCallbackDelegate);
+                }
+            }
+        }
+
         internal TextFieldSignal TextChangedSignal()
         {
             TextFieldSignal ret = new TextFieldSignal(Interop.TextField.TextChangedSignal(SwigCPtr), false);
@@ -97,6 +126,13 @@ namespace Tizen.NUI.BaseComponents
         internal TextFieldSignal MaxLengthReachedSignal()
         {
             TextFieldSignal ret = new TextFieldSignal(Interop.TextField.MaxLengthReachedSignal(SwigCPtr), false);
+            if (NDalicPINVOKE.SWIGPendingException.Pending) throw NDalicPINVOKE.SWIGPendingException.Retrieve();
+            return ret;
+        }
+
+        internal TextFieldSignal AnchorTouchedSignal()
+        {
+            TextFieldSignal ret = new TextFieldSignal(Interop.TextField.AnchorTouchedSignal(SwigCPtr), false);
             if (NDalicPINVOKE.SWIGPendingException.Pending) throw NDalicPINVOKE.SWIGPendingException.Retrieve();
             return ret;
         }
@@ -126,6 +162,22 @@ namespace Tizen.NUI.BaseComponents
             {
                 //here we send all data to user event handlers
                 _textFieldMaxLengthReachedEventHandler(this, e);
+            }
+        }
+
+        private void OnAnchorTouched(IntPtr textField, IntPtr href, uint hrefLength)
+        {
+            AnchorTouchedEventArgs e = new AnchorTouchedEventArgs();
+
+            // Populate all members of "e" (AnchorTouchedEventArgs) with real data
+            e.TextField = Registry.GetManagedBaseHandleFromNativePtr(textField) as TextField;
+            e.Href = Marshal.PtrToStringAnsi(href);
+            e.HrefLength = hrefLength;
+
+            if (_textFieldAnchorTouchedEventHandler != null)
+            {
+                //here we send all data to user event handlers
+                _textFieldAnchorTouchedEventHandler(this, e);
             }
         }
 
@@ -175,6 +227,59 @@ namespace Tizen.NUI.BaseComponents
                 set
                 {
                     _textField = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// The AnchorChanged event arguments.
+        /// </summary>
+        public class AnchorTouchedEventArgs : EventArgs
+        {
+            private TextField _textField;
+            private string _href;
+            private uint _hrefLength;
+
+            /// <summary>
+            /// TextField.
+            /// </summary>
+            public TextField TextField
+            {
+                get
+                {
+                    return _textField;
+                }
+                set
+                {
+                    _textField = value;
+                }
+            }
+            /// <summary>
+            /// Anchor href.
+            /// </summary>
+            public string Href
+            {
+                get
+                {
+                    return _href;
+                }
+                set
+                {
+                    _href = value;
+                }
+            }
+            /// <summary>
+            /// Anchor href length.
+            /// </summary>
+            public uint HrefLength
+            {
+                get
+                {
+                    return _hrefLength;
+                }
+                set
+                {
+                    _hrefLength = value;
                 }
             }
         }
