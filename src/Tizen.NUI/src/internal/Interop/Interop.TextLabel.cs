@@ -207,6 +207,9 @@ namespace Tizen.NUI
 
             [global::System.Runtime.InteropServices.DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_TextLabel_Property_ANCHOR_CLICKED_COLOR_get")]
             public static extern int AnchorClickedColorGet();
+
+            [global::System.Runtime.InteropServices.DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_TextLabel_Property_TEXT_LAYOUT_DIRECTION_POLICY_get")]
+            public static extern int TextLayoutDirectionPolicyGet();
         }
     }
 }

@@ -293,6 +293,23 @@ namespace Tizen.NUI.BaseComponents
             return textLabel.internalAnchorClickedColor;
         }));
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public static readonly BindableProperty TextLayoutDirectionPolicyProperty = BindableProperty.Create(nameof(TextLayoutDirectionPolicy), typeof(TextLayoutDirectionPolicy), typeof(TextLabel), TextLayoutDirectionPolicy.Inherit, propertyChanged: (BindableProperty.BindingPropertyChangedDelegate)((bindable, oldValue, newValue) =>
+        {
+            var textLabel = (TextLabel)bindable;
+            if (newValue != null)
+            {
+
+                Object.InternalSetPropertyInt(textLabel.SwigCPtr, TextLabel.Property.TextLayoutDirectionPolicy, (int)newValue);
+            }
+        }),
+        defaultValueCreator: (BindableProperty.CreateDefaultValueDelegate)((bindable) =>
+        {
+            var textLabel = (TextLabel)bindable;
+
+            return (TextLayoutDirectionPolicy)Object.InternalGetPropertyInt(textLabel.SwigCPtr, TextLabel.Property.TextLayoutDirectionPolicy);
+        }));
+
         /// This will be public opened in tizen_5.0 after ACR done. Before ACR, need to be hidden as inhouse API.
         [EditorBrowsable(EditorBrowsableState.Never)]
         public static readonly BindableProperty EnableMarkupProperty = BindableProperty.Create(nameof(EnableMarkup), typeof(bool), typeof(TextLabel), false, propertyChanged: (BindableProperty.BindingPropertyChangedDelegate)((bindable, oldValue, newValue) =>

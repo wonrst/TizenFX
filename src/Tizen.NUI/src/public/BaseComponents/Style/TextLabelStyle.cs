@@ -334,6 +334,17 @@ namespace Tizen.NUI.BaseComponents
             var textLabelStyle = (TextLabelStyle)bindable;
             return textLabelStyle.anchorClickedColor;
         });
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public static readonly BindableProperty TextLayoutDirectionPolicyProperty = BindableProperty.Create(nameof(TextLayoutDirectionPolicy), typeof(TextLayoutDirectionPolicy?), typeof(TextLabelStyle), null, propertyChanged: (bindable, oldValue, newValue) =>
+        {
+            var textLabelStyle = (TextLabelStyle)bindable;
+            textLabelStyle.textLayoutDirectionPolicy = (TextLayoutDirectionPolicy?)newValue;
+        },
+        defaultValueCreator: (bindable) =>
+        {
+            var textLabelStyle = (TextLabelStyle)bindable;
+            return textLabelStyle.textLayoutDirectionPolicy;
+        });
         /// This will be public opened in tizen_6.0 after ACR done. Before ACR, need to be hidden as inhouse API.
         [EditorBrowsable(EditorBrowsableState.Never)]
         public static readonly BindableProperty MatchSystemLanguageDirectionProperty = BindableProperty.Create(nameof(MatchSystemLanguageDirection), typeof(bool?), typeof(TextLabelStyle), null, propertyChanged: (bindable, oldValue, newValue) =>
@@ -399,6 +410,8 @@ namespace Tizen.NUI.BaseComponents
         private float? fontSizeScale;
         private Color anchorColor;
         private Color anchorClickedColor;
+        private TextLayoutDirectionPolicy? textLayoutDirectionPolicy;
+
 
         static TextLabelStyle() { }
 
@@ -607,6 +620,13 @@ namespace Tizen.NUI.BaseComponents
         {
             get => (Color)GetValue(AnchorClickedColorProperty);
             set => SetValue(AnchorClickedColorProperty, value);
+        }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public TextLayoutDirectionPolicy? TextLayoutDirectionPolicy
+        {
+            get => (TextLayoutDirectionPolicy?)GetValue(TextLayoutDirectionPolicyProperty);
+            set => SetValue(TextLayoutDirectionPolicyProperty, value);
         }
 
         /// This will be public opened in tizen_6.0 after ACR done. Before ACR, need to be hidden as inhouse API.

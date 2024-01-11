@@ -1335,6 +1335,33 @@ namespace Tizen.NUI.BaseComponents
         }
 
         /// <summary>
+        /// The enumeration used to set the policy (Inherit, Locale, Contents) that determines the direction of the text layout. <br />
+        /// Default is TextLayoutDirectionPolicy.Inherit.
+        /// </summary>
+        /// <remarks>
+        /// This property overwrites the value of MatchSystemLanguageDirection. <br />
+        /// Additionally, MatchSystemLanguageDirection overwrites the value of TextLayoutDirectionPolicy. <br />
+        /// MatchSystemLanguageDirection is retained for compatibility purposes. <br />
+        /// Do not use both properties together. <br />
+        /// TextLayoutDirectionPolicy is backward compatible with MatchSystemLanguageDirection. <br />
+        /// Note that when MatchSystemLanguageDirection is true, TextLayoutDirectionPolicy is set to Locale. <br />
+        /// When MatchSystemLanguageDirection is false, TextLayoutDirectionPolicy is set to Contents.
+        /// </remarks>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public TextLayoutDirectionPolicy TextLayoutDirectionPolicy
+        {
+            get
+            {
+                return (TextLayoutDirectionPolicy)GetValue(TextLayoutDirectionPolicyProperty);
+            }
+            set
+            {
+                SetValue(TextLayoutDirectionPolicyProperty, value);
+                NotifyPropertyChanged();
+            }
+        }
+
+        /// <summary>
         /// The text fit parameters.<br />
         /// The textFit map contains the following keys :<br />
         /// <list type="table">
@@ -1904,6 +1931,7 @@ namespace Tizen.NUI.BaseComponents
             internal static readonly int CharacterSpacing = Interop.TextLabel.CharacterSpacingGet();
             internal static readonly int AnchorColor = Interop.TextLabel.AnchorColorGet();
             internal static readonly int AnchorClickedColor = Interop.TextLabel.AnchorClickedColorGet();
+            internal static readonly int TextLayoutDirectionPolicy = Interop.TextLabel.TextLayoutDirectionPolicyGet();
 
 
             internal static void Preload()
