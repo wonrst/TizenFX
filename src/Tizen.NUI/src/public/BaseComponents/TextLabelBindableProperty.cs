@@ -973,6 +973,26 @@ namespace Tizen.NUI.BaseComponents
             return Object.InternalGetPropertyBool(textLabel.SwigCPtr, TextLabel.Property.AsyncLoad);
         }
 
+        /// <summary>
+        /// AutoAsyncLoadProperty
+        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public static readonly BindableProperty AutoAsyncLoadProperty = null;
+        internal static void SetInternalAutoAsyncLoadProperty(BindableObject bindable, object oldValue, object newValue)
+        {
+            var textLabel = (TextLabel)bindable;
+            if (newValue != null)
+            {
+                Object.InternalSetPropertyBool(textLabel.SwigCPtr, TextLabel.Property.AutoAsyncLoad, (bool)newValue);
+            }
+        }
+        internal static object GetInternalAutoAsyncLoadProperty(BindableObject bindable)
+        {
+            var textLabel = (TextLabel)bindable;
+
+            return Object.InternalGetPropertyBool(textLabel.SwigCPtr, TextLabel.Property.AutoAsyncLoad);
+        }
+
         internal Selector<string> TranslatableTextSelector
         {
             get => GetSelector<string>(selectorData?.TranslatableText, TextLabel.TranslatableTextProperty);
