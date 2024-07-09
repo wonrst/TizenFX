@@ -217,6 +217,9 @@ namespace Tizen.NUI.BaseComponents
 
                 CutoutProperty = BindableProperty.Create(nameof(Cutout), typeof(bool), typeof(TextLabel), false,
                     propertyChanged: SetInternalCutoutProperty, defaultValueCreator: GetInternalCutoutProperty);
+
+                AsyncLoadProperty = BindableProperty.Create(nameof(AsyncLoad), typeof(bool), typeof(TextLabel), false,
+                    propertyChanged: SetInternalAsyncLoadProperty, defaultValueCreator: GetInternalAsyncLoadProperty);
             }
         }
 
@@ -2511,6 +2514,41 @@ namespace Tizen.NUI.BaseComponents
             }
         }
 
+        /// <summary>
+        /// The AsyncLoad property.
+        /// </summary>
+        /// <remarks>
+        /// All text rendering processes (update/layout/render) are performed asynchronously.
+        /// You can automatically or manually request async rendering through AutoAsyncLoad.
+        /// </remarks>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool AsyncLoad
+        {
+            get
+            {
+                if (NUIApplication.IsUsingXaml)
+                {
+                    return (bool)GetValue(AsyncLoadProperty);
+                }
+                else
+                {
+                    return (bool)GetInternalAsyncLoadProperty(this);
+                }
+            }
+            set
+            {
+                if (NUIApplication.IsUsingXaml)
+                {
+                    SetValue(AsyncLoadProperty, value);
+                }
+                else
+                {
+                    SetInternalAsyncLoadProperty(this, null, value);
+                }
+                NotifyPropertyChanged();
+            }
+        }
+
         private TextLabelSelectorData EnsureSelectorData() => selectorData ?? (selectorData = new TextLabelSelectorData());
 
         /// <summary>
@@ -2737,6 +2775,7 @@ namespace Tizen.NUI.BaseComponents
             internal static readonly int RemoveFrontInset = Interop.TextLabel.RemoveFrontInsetGet();
             internal static readonly int RemoveBackInset = Interop.TextLabel.RemoveBackInsetGet();
             internal static readonly int Cutout = Interop.TextLabel.CutoutGet();
+            internal static readonly int AsyncLoad = Interop.TextLabel.AsyncLoadGet();
 
 
             internal static void Preload()
