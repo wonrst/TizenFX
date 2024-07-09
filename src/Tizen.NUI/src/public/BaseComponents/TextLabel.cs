@@ -220,6 +220,9 @@ namespace Tizen.NUI.BaseComponents
 
                 AsyncLoadProperty = BindableProperty.Create(nameof(AsyncLoad), typeof(bool), typeof(TextLabel), false,
                     propertyChanged: SetInternalAsyncLoadProperty, defaultValueCreator: GetInternalAsyncLoadProperty);
+
+                AutoAsyncLoadProperty = BindableProperty.Create(nameof(AutoAsyncLoad), typeof(bool), typeof(TextLabel), true,
+                    propertyChanged: SetInternalAutoAsyncLoadProperty, defaultValueCreator: GetInternalAutoAsyncLoadProperty);
             }
         }
 
@@ -2549,6 +2552,41 @@ namespace Tizen.NUI.BaseComponents
             }
         }
 
+        /// <summary>
+        /// The AutoAsyncLoad property.
+        /// </summary>
+        /// <remarks>
+        /// If True, automatically requests an asynchronous text load in OnRelayout.
+        /// This will only be effective when AsyncLoad is set to true.
+        /// </remarks>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool AutoAsyncLoad
+        {
+            get
+            {
+                if (NUIApplication.IsUsingXaml)
+                {
+                    return (bool)GetValue(AutoAsyncLoadProperty);
+                }
+                else
+                {
+                    return (bool)GetInternalAutoAsyncLoadProperty(this);
+                }
+            }
+            set
+            {
+                if (NUIApplication.IsUsingXaml)
+                {
+                    SetValue(AutoAsyncLoadProperty, value);
+                }
+                else
+                {
+                    SetInternalAutoAsyncLoadProperty(this, null, value);
+                }
+                NotifyPropertyChanged();
+            }
+        }
+
         private TextLabelSelectorData EnsureSelectorData() => selectorData ?? (selectorData = new TextLabelSelectorData());
 
         /// <summary>
@@ -2776,6 +2814,7 @@ namespace Tizen.NUI.BaseComponents
             internal static readonly int RemoveBackInset = Interop.TextLabel.RemoveBackInsetGet();
             internal static readonly int Cutout = Interop.TextLabel.CutoutGet();
             internal static readonly int AsyncLoad = Interop.TextLabel.AsyncLoadGet();
+            internal static readonly int AutoAsyncLoad = Interop.TextLabel.AutoAsyncLoadGet();
 
 
             internal static void Preload()
