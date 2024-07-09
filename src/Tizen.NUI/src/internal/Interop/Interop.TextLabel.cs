@@ -198,6 +198,9 @@ namespace Tizen.NUI
 
             [global::System.Runtime.InteropServices.DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_TextLabel_Property_AUTO_ASYNC_LOAD_get")]
             public static extern int AutoAsyncLoadGet();
+
+            [global::System.Runtime.InteropServices.DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_TextLabel_Property_ASYNC_PROPERTY_UPDATED_get")]
+            public static extern int AsyncPropertyUpdatedGet();
         }
     }
 }
