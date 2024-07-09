@@ -2521,7 +2521,7 @@ namespace Tizen.NUI.BaseComponents
         /// The AsyncLoad property.
         /// </summary>
         /// <remarks>
-        /// All text rendering processes (update/layout/render) are performed asynchronously.
+        /// All text rendering processes (update/layout/render) are performed asynchronously.<br />
         /// You can automatically or manually request async rendering through AutoAsyncLoad.
         /// </remarks>
         [EditorBrowsable(EditorBrowsableState.Never)]
@@ -2556,7 +2556,7 @@ namespace Tizen.NUI.BaseComponents
         /// The AutoAsyncLoad property.
         /// </summary>
         /// <remarks>
-        /// If True, automatically requests an asynchronous text load in OnRelayout.
+        /// If True, automatically requests an asynchronous text load in OnRelayout.<br />
         /// This will only be effective when AsyncLoad is set to true.
         /// </remarks>
         [EditorBrowsable(EditorBrowsableState.Never)]
@@ -2584,6 +2584,28 @@ namespace Tizen.NUI.BaseComponents
                     SetInternalAutoAsyncLoadProperty(this, null, value);
                 }
                 NotifyPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// The AsyncPropertyUpdated property.
+        /// </summary>
+        /// <remarks>
+        /// When the text property changes, the AsyncPropertyUpdated property becomes true,<br />
+        /// indicating that a new rendering needs to be performed.<br />
+        /// Once the new rendering is completed, this property is set back to false.
+        /// </remarks>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool AsyncPropertyUpdated
+        {
+            get
+            {
+                bool asyncPropertyUpdated = false;
+                using (var propertyValue = GetProperty(TextLabel.Property.AsyncPropertyUpdated))
+                {
+                    propertyValue.Get(out asyncPropertyUpdated);
+                }
+                return asyncPropertyUpdated;
             }
         }
 
@@ -2815,6 +2837,7 @@ namespace Tizen.NUI.BaseComponents
             internal static readonly int Cutout = Interop.TextLabel.CutoutGet();
             internal static readonly int AsyncLoad = Interop.TextLabel.AsyncLoadGet();
             internal static readonly int AutoAsyncLoad = Interop.TextLabel.AutoAsyncLoadGet();
+            internal static readonly int AsyncPropertyUpdated = Interop.TextLabel.AsyncPropertyUpdatedGet();
 
 
             internal static void Preload()
