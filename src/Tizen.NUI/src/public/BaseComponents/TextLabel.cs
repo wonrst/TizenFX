@@ -218,11 +218,8 @@ namespace Tizen.NUI.BaseComponents
                 CutoutProperty = BindableProperty.Create(nameof(Cutout), typeof(bool), typeof(TextLabel), false,
                     propertyChanged: SetInternalCutoutProperty, defaultValueCreator: GetInternalCutoutProperty);
 
-                AsyncLoadProperty = BindableProperty.Create(nameof(AsyncLoad), typeof(bool), typeof(TextLabel), false,
-                    propertyChanged: SetInternalAsyncLoadProperty, defaultValueCreator: GetInternalAsyncLoadProperty);
-
-                AutoAsyncLoadProperty = BindableProperty.Create(nameof(AutoAsyncLoad), typeof(bool), typeof(TextLabel), true,
-                    propertyChanged: SetInternalAutoAsyncLoadProperty, defaultValueCreator: GetInternalAutoAsyncLoadProperty);
+                RenderModeProperty = BindableProperty.Create(nameof(RenderMode), typeof(TextRenderMode), typeof(TextLabel), TextRenderMode.Sync,
+                    propertyChanged: SetInternalRenderModeProperty, defaultValueCreator: GetInternalRenderModeProperty);
             }
         }
 
@@ -332,7 +329,7 @@ namespace Tizen.NUI.BaseComponents
         /// <param name="width">The width of text to render.</param>
         /// <param name="height">The height of text to render.</param>
         /// <remarks>
-        /// Only works when AsyncLoad is true.
+        /// Only works when AsyncMode.
         /// </remarks>
         [EditorBrowsable(EditorBrowsableState.Never)]
         public void RequestAsyncRenderWithFixedSize(float width, float height)
@@ -347,7 +344,7 @@ namespace Tizen.NUI.BaseComponents
         /// <param name="width">The width of text to render.</param>
         /// <param name="heightConstraint">The maximum available height of text to render.</param>
         /// <remarks>
-        /// Only works when AsyncLoad is true.<br />
+        /// Only works when AsyncMode.<br />
         /// The height is determined by the content of the text when rendered with the given width.<br />
         /// The result will be the same as the height returned by GetHeightForWidth.
         /// If the heightConstraint is given, the maximum height will be the heightConstraint.
@@ -2570,96 +2567,42 @@ namespace Tizen.NUI.BaseComponents
         }
 
         /// <summary>
-        /// The AsyncLoad property.
+        /// The RenderMode property.
         /// </summary>
         /// <remarks>
-        /// All text rendering processes (update/layout/render) are performed asynchronously.<br />
-        /// You can automatically or manually request async rendering through AutoAsyncLoad.
+        /// Sync : default, synchronous text loading.<br />
+        /// AsyncAuto : automatically requests an asynchronous text load in OnRelayout.<br />
+        /// AsyncManual : users should manually request rendering using the async text method.<br />
+        /// All text rendering processes (update/layout/render) are performed asynchronously in AsyncAuto and AsyncManual.
         /// </remarks>
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool AsyncLoad
+        public TextRenderMode RenderMode
         {
             get
             {
                 if (NUIApplication.IsUsingXaml)
                 {
-                    return (bool)GetValue(AsyncLoadProperty);
+                    return (TextRenderMode)GetValue(RenderModeProperty);
                 }
                 else
                 {
-                    return (bool)GetInternalAsyncLoadProperty(this);
+                    return (TextRenderMode)GetInternalRenderModeProperty(this);
                 }
             }
             set
             {
                 if (NUIApplication.IsUsingXaml)
                 {
-                    SetValue(AsyncLoadProperty, value);
+                    SetValue(RenderModeProperty, value);
                 }
                 else
                 {
-                    SetInternalAsyncLoadProperty(this, null, value);
+                    SetInternalRenderModeProperty(this, null, value);
                 }
                 NotifyPropertyChanged();
             }
         }
 
-        /// <summary>
-        /// The AutoAsyncLoad property.
-        /// </summary>
-        /// <remarks>
-        /// If True, automatically requests an asynchronous text load in OnRelayout.<br />
-        /// This will only be effective when AsyncLoad is set to true.
-        /// </remarks>
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool AutoAsyncLoad
-        {
-            get
-            {
-                if (NUIApplication.IsUsingXaml)
-                {
-                    return (bool)GetValue(AutoAsyncLoadProperty);
-                }
-                else
-                {
-                    return (bool)GetInternalAutoAsyncLoadProperty(this);
-                }
-            }
-            set
-            {
-                if (NUIApplication.IsUsingXaml)
-                {
-                    SetValue(AutoAsyncLoadProperty, value);
-                }
-                else
-                {
-                    SetInternalAutoAsyncLoadProperty(this, null, value);
-                }
-                NotifyPropertyChanged();
-            }
-        }
-
-        /// <summary>
-        /// The AsyncPropertyUpdated property.
-        /// </summary>
-        /// <remarks>
-        /// When the text property changes, the AsyncPropertyUpdated property becomes true,<br />
-        /// indicating that a new rendering needs to be performed.<br />
-        /// Once the new rendering is completed, this property is set back to false.
-        /// </remarks>
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool AsyncPropertyUpdated
-        {
-            get
-            {
-                bool asyncPropertyUpdated = false;
-                using (var propertyValue = GetProperty(TextLabel.Property.AsyncPropertyUpdated))
-                {
-                    propertyValue.Get(out asyncPropertyUpdated);
-                }
-                return asyncPropertyUpdated;
-            }
-        }
 
         private TextLabelSelectorData EnsureSelectorData() => selectorData ?? (selectorData = new TextLabelSelectorData());
 
@@ -2887,9 +2830,7 @@ namespace Tizen.NUI.BaseComponents
             internal static readonly int RemoveFrontInset = Interop.TextLabel.RemoveFrontInsetGet();
             internal static readonly int RemoveBackInset = Interop.TextLabel.RemoveBackInsetGet();
             internal static readonly int Cutout = Interop.TextLabel.CutoutGet();
-            internal static readonly int AsyncLoad = Interop.TextLabel.AsyncLoadGet();
-            internal static readonly int AutoAsyncLoad = Interop.TextLabel.AutoAsyncLoadGet();
-            internal static readonly int AsyncPropertyUpdated = Interop.TextLabel.AsyncPropertyUpdatedGet();
+            internal static readonly int RenderMode = Interop.TextLabel.RenderModeGet();
 
 
             internal static void Preload()

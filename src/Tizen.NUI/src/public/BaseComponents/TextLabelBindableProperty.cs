@@ -954,43 +954,23 @@ namespace Tizen.NUI.BaseComponents
         }
 
         /// <summary>
-        /// AsyncLoadProperty
+        /// RenderModeProperty
         /// </summary>
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public static readonly BindableProperty AsyncLoadProperty = null;
-        internal static void SetInternalAsyncLoadProperty(BindableObject bindable, object oldValue, object newValue)
+        public static readonly BindableProperty RenderModeProperty = null;
+        internal static void SetInternalRenderModeProperty(BindableObject bindable, object oldValue, object newValue)
         {
             var textLabel = (TextLabel)bindable;
             if (newValue != null)
             {
-                Object.InternalSetPropertyBool(textLabel.SwigCPtr, TextLabel.Property.AsyncLoad, (bool)newValue);
+                Object.InternalSetPropertyInt(textLabel.SwigCPtr, TextLabel.Property.RenderMode, (int)newValue);
             }
         }
-        internal static object GetInternalAsyncLoadProperty(BindableObject bindable)
+        internal static object GetInternalRenderModeProperty(BindableObject bindable)
         {
             var textLabel = (TextLabel)bindable;
 
-            return Object.InternalGetPropertyBool(textLabel.SwigCPtr, TextLabel.Property.AsyncLoad);
-        }
-
-        /// <summary>
-        /// AutoAsyncLoadProperty
-        /// </summary>
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public static readonly BindableProperty AutoAsyncLoadProperty = null;
-        internal static void SetInternalAutoAsyncLoadProperty(BindableObject bindable, object oldValue, object newValue)
-        {
-            var textLabel = (TextLabel)bindable;
-            if (newValue != null)
-            {
-                Object.InternalSetPropertyBool(textLabel.SwigCPtr, TextLabel.Property.AutoAsyncLoad, (bool)newValue);
-            }
-        }
-        internal static object GetInternalAutoAsyncLoadProperty(BindableObject bindable)
-        {
-            var textLabel = (TextLabel)bindable;
-
-            return Object.InternalGetPropertyBool(textLabel.SwigCPtr, TextLabel.Property.AutoAsyncLoad);
+            return (TextRenderMode)Object.InternalGetPropertyInt(textLabel.SwigCPtr, TextLabel.Property.RenderMode);
         }
 
         internal Selector<string> TranslatableTextSelector
