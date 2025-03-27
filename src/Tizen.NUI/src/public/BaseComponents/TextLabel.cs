@@ -2287,6 +2287,20 @@ namespace Tizen.NUI.BaseComponents
             get => Object.InternalGetPropertyBool(SwigCPtr, Property.IsScrolling);
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public float RenderScale
+        {
+            get
+            {
+                return (float)Object.InternalGetPropertyFloat(this.SwigCPtr, Property.RenderScale);
+            }
+            set
+            {
+                Object.InternalSetPropertyFloat(this.SwigCPtr, Property.RenderScale, (float)value);
+                NotifyPropertyChanged();
+            }
+        }
+
         /// <summary>
         /// The AutoScrollLoopDelay property.<br />
         /// The amount of time to delay the starting time of auto scrolling and further loops.<br />
@@ -3592,6 +3606,7 @@ namespace Tizen.NUI.BaseComponents
             internal static readonly int AsyncLineCount = Interop.TextLabel.AsyncLineCountGet();
             internal static readonly int EllipsisMode = Interop.TextLabel.EllipsisModeGet();
             internal static readonly int IsScrolling = Interop.TextLabel.IsScrollingGet();
+            internal static readonly int RenderScale = Interop.TextLabel.RenderScaleGet();
 
 
             internal static void Preload()
