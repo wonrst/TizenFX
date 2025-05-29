@@ -116975,7 +116975,7 @@
       "output": {
         ".html": {
           "relative_path": "API13/api/Tizen.Multimedia.Remoting.ScreenMirroring.html",
-          "hash": "AkYiRSDFwQMi3DwY00BgvUWfe60IKTcioOdwhQnrbBQ="
+          "hash": "9hwHiAHnzpFEK9fDHZWQkxdsewROxBhNO1LVRrHY/EE="
         }
       },
       "is_incremental": false,
@@ -117002,6 +117002,32 @@
         ".html": {
           "relative_path": "API13/api/Tizen.Multimedia.Remoting.ScreenMirroringAudioInfo.html",
           "hash": "julR4SwVi/eCnTA91JqZKgEYg+1hPG9WD0+lhWuekM0="
+        }
+      },
+      "is_incremental": false,
+      "version": "API13",
+      "group": "API13"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/API13/api/Tizen.Multimedia.Remoting.ScreenMirroringDeviceType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "API13/api/Tizen.Multimedia.Remoting.ScreenMirroringDeviceType.html",
+          "hash": "UweCEqm2IqSsZ9oy1Y/S+zuwU5nUdWjxzvmFUK0gBv8="
+        }
+      },
+      "is_incremental": false,
+      "version": "API13",
+      "group": "API13"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/API13/api/Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "API13/api/Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.html",
+          "hash": "q9b/pgA27YRuWtroLrj2tymMRsm6kNHarl30YAfl640="
         }
       },
       "is_incremental": false,
@@ -117612,7 +117638,7 @@
       "output": {
         ".html": {
           "relative_path": "API13/api/Tizen.Multimedia.Remoting.html",
-          "hash": "o1VW301JtpOo6W/TJiRGi4dQsAbQmAgew8pRqRoMg18="
+          "hash": "VP3oRHFOK8TFUnq+Zmn7SU4YIjQCk10gJH3EbirMGzY="
         }
       },
       "is_incremental": false,
@@ -136995,7 +137021,7 @@
       "output": {
         ".html": {
           "relative_path": "API13/api/toc.html",
-          "hash": "Rjn3nfWYArNI7yNAmnTrEB211WzfTLij+Bjb+O3ivjM="
+          "hash": "DWp0NH7fjBQRwUJ/TV0K7GitdS4htKMHkksT5mJ/33Q="
         }
       },
       "is_incremental": false,
@@ -315487,7 +315513,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 2667,
+          "total_file_count": 2669,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {

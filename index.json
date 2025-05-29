@@ -45009,6 +45009,16 @@
     "title": "Class ScreenMirroringAudioInfo",
     "keywords": ""
   },
+  "API13/api/Tizen.Multimedia.Remoting.ScreenMirroringDeviceType.html": {
+    "href": "API13/api/Tizen.Multimedia.Remoting.ScreenMirroringDeviceType.html",
+    "title": "Enum ScreenMirroringDeviceType",
+    "keywords": ""
+  },
+  "API13/api/Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.html": {
+    "href": "API13/api/Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.html",
+    "title": "Enum ScreenMirroringDisplayMode",
+    "keywords": ""
+  },
   "API13/api/Tizen.Multimedia.Remoting.ScreenMirroringError.html": {
     "href": "API13/api/Tizen.Multimedia.Remoting.ScreenMirroringError.html",
     "title": "Enum ScreenMirroringError",

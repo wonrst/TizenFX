@@ -84533,6 +84533,45 @@ references:
   isSpec: "True"
   fullName: Tizen.Multimedia.Remoting.ScreenMirroring.Disconnect
   nameWithType: ScreenMirroring.Disconnect
+- uid: Tizen.Multimedia.Remoting.ScreenMirroring.DisplayMode
+  name: DisplayMode
+  href: API13/api/Tizen.Multimedia.Remoting.ScreenMirroring.html#Tizen_Multimedia_Remoting_ScreenMirroring_DisplayMode
+  commentId: P:Tizen.Multimedia.Remoting.ScreenMirroring.DisplayMode
+  fullName: Tizen.Multimedia.Remoting.ScreenMirroring.DisplayMode
+  nameWithType: ScreenMirroring.DisplayMode
+- uid: Tizen.Multimedia.Remoting.ScreenMirroring.DisplayMode*
+  name: DisplayMode
+  href: API13/api/Tizen.Multimedia.Remoting.ScreenMirroring.html#Tizen_Multimedia_Remoting_ScreenMirroring_DisplayMode_
+  commentId: Overload:Tizen.Multimedia.Remoting.ScreenMirroring.DisplayMode
+  isSpec: "True"
+  fullName: Tizen.Multimedia.Remoting.ScreenMirroring.DisplayMode
+  nameWithType: ScreenMirroring.DisplayMode
+- uid: Tizen.Multimedia.Remoting.ScreenMirroring.DisplayRoi
+  name: DisplayRoi
+  href: API13/api/Tizen.Multimedia.Remoting.ScreenMirroring.html#Tizen_Multimedia_Remoting_ScreenMirroring_DisplayRoi
+  commentId: P:Tizen.Multimedia.Remoting.ScreenMirroring.DisplayRoi
+  fullName: Tizen.Multimedia.Remoting.ScreenMirroring.DisplayRoi
+  nameWithType: ScreenMirroring.DisplayRoi
+- uid: Tizen.Multimedia.Remoting.ScreenMirroring.DisplayRoi*
+  name: DisplayRoi
+  href: API13/api/Tizen.Multimedia.Remoting.ScreenMirroring.html#Tizen_Multimedia_Remoting_ScreenMirroring_DisplayRoi_
+  commentId: Overload:Tizen.Multimedia.Remoting.ScreenMirroring.DisplayRoi
+  isSpec: "True"
+  fullName: Tizen.Multimedia.Remoting.ScreenMirroring.DisplayRoi
+  nameWithType: ScreenMirroring.DisplayRoi
+- uid: Tizen.Multimedia.Remoting.ScreenMirroring.DisplayRotation
+  name: DisplayRotation
+  href: API13/api/Tizen.Multimedia.Remoting.ScreenMirroring.html#Tizen_Multimedia_Remoting_ScreenMirroring_DisplayRotation
+  commentId: P:Tizen.Multimedia.Remoting.ScreenMirroring.DisplayRotation
+  fullName: Tizen.Multimedia.Remoting.ScreenMirroring.DisplayRotation
+  nameWithType: ScreenMirroring.DisplayRotation
+- uid: Tizen.Multimedia.Remoting.ScreenMirroring.DisplayRotation*
+  name: DisplayRotation
+  href: API13/api/Tizen.Multimedia.Remoting.ScreenMirroring.html#Tizen_Multimedia_Remoting_ScreenMirroring_DisplayRotation_
+  commentId: Overload:Tizen.Multimedia.Remoting.ScreenMirroring.DisplayRotation
+  isSpec: "True"
+  fullName: Tizen.Multimedia.Remoting.ScreenMirroring.DisplayRotation
+  nameWithType: ScreenMirroring.DisplayRotation
 - uid: Tizen.Multimedia.Remoting.ScreenMirroring.Dispose
   name: Dispose()
   href: API13/api/Tizen.Multimedia.Remoting.ScreenMirroring.html#Tizen_Multimedia_Remoting_ScreenMirroring_Dispose
@@ -84622,6 +84661,19 @@ references:
   isSpec: "True"
   fullName: Tizen.Multimedia.Remoting.ScreenMirroring.ResumeAsync
   nameWithType: ScreenMirroring.ResumeAsync
+- uid: Tizen.Multimedia.Remoting.ScreenMirroring.SourceDeviceType
+  name: SourceDeviceType
+  href: API13/api/Tizen.Multimedia.Remoting.ScreenMirroring.html#Tizen_Multimedia_Remoting_ScreenMirroring_SourceDeviceType
+  commentId: P:Tizen.Multimedia.Remoting.ScreenMirroring.SourceDeviceType
+  fullName: Tizen.Multimedia.Remoting.ScreenMirroring.SourceDeviceType
+  nameWithType: ScreenMirroring.SourceDeviceType
+- uid: Tizen.Multimedia.Remoting.ScreenMirroring.SourceDeviceType*
+  name: SourceDeviceType
+  href: API13/api/Tizen.Multimedia.Remoting.ScreenMirroring.html#Tizen_Multimedia_Remoting_ScreenMirroring_SourceDeviceType_
+  commentId: Overload:Tizen.Multimedia.Remoting.ScreenMirroring.SourceDeviceType
+  isSpec: "True"
+  fullName: Tizen.Multimedia.Remoting.ScreenMirroring.SourceDeviceType
+  nameWithType: ScreenMirroring.SourceDeviceType
 - uid: Tizen.Multimedia.Remoting.ScreenMirroring.StartAsync
   name: StartAsync()
   href: API13/api/Tizen.Multimedia.Remoting.ScreenMirroring.html#Tizen_Multimedia_Remoting_ScreenMirroring_StartAsync
@@ -84755,6 +84807,72 @@ references:
   isSpec: "True"
   fullName: Tizen.Multimedia.Remoting.ScreenMirroringAudioInfo.SampleRate
   nameWithType: ScreenMirroringAudioInfo.SampleRate
+- uid: Tizen.Multimedia.Remoting.ScreenMirroringDeviceType
+  name: ScreenMirroringDeviceType
+  href: API13/api/Tizen.Multimedia.Remoting.ScreenMirroringDeviceType.html
+  commentId: T:Tizen.Multimedia.Remoting.ScreenMirroringDeviceType
+  fullName: Tizen.Multimedia.Remoting.ScreenMirroringDeviceType
+  nameWithType: ScreenMirroringDeviceType
+- uid: Tizen.Multimedia.Remoting.ScreenMirroringDeviceType.Generic
+  name: Generic
+  href: API13/api/Tizen.Multimedia.Remoting.ScreenMirroringDeviceType.html#Tizen_Multimedia_Remoting_ScreenMirroringDeviceType_Generic
+  commentId: F:Tizen.Multimedia.Remoting.ScreenMirroringDeviceType.Generic
+  fullName: Tizen.Multimedia.Remoting.ScreenMirroringDeviceType.Generic
+  nameWithType: ScreenMirroringDeviceType.Generic
+- uid: Tizen.Multimedia.Remoting.ScreenMirroringDeviceType.Mobile
+  name: Mobile
+  href: API13/api/Tizen.Multimedia.Remoting.ScreenMirroringDeviceType.html#Tizen_Multimedia_Remoting_ScreenMirroringDeviceType_Mobile
+  commentId: F:Tizen.Multimedia.Remoting.ScreenMirroringDeviceType.Mobile
+  fullName: Tizen.Multimedia.Remoting.ScreenMirroringDeviceType.Mobile
+  nameWithType: ScreenMirroringDeviceType.Mobile
+- uid: Tizen.Multimedia.Remoting.ScreenMirroringDeviceType.Tv
+  name: Tv
+  href: API13/api/Tizen.Multimedia.Remoting.ScreenMirroringDeviceType.html#Tizen_Multimedia_Remoting_ScreenMirroringDeviceType_Tv
+  commentId: F:Tizen.Multimedia.Remoting.ScreenMirroringDeviceType.Tv
+  fullName: Tizen.Multimedia.Remoting.ScreenMirroringDeviceType.Tv
+  nameWithType: ScreenMirroringDeviceType.Tv
+- uid: Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode
+  name: ScreenMirroringDisplayMode
+  href: API13/api/Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.html
+  commentId: T:Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode
+  fullName: Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode
+  nameWithType: ScreenMirroringDisplayMode
+- uid: Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.CroppedFull
+  name: CroppedFull
+  href: API13/api/Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.html#Tizen_Multimedia_Remoting_ScreenMirroringDisplayMode_CroppedFull
+  commentId: F:Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.CroppedFull
+  fullName: Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.CroppedFull
+  nameWithType: ScreenMirroringDisplayMode.CroppedFull
+- uid: Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.CustomRoi
+  name: CustomRoi
+  href: API13/api/Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.html#Tizen_Multimedia_Remoting_ScreenMirroringDisplayMode_CustomRoi
+  commentId: F:Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.CustomRoi
+  fullName: Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.CustomRoi
+  nameWithType: ScreenMirroringDisplayMode.CustomRoi
+- uid: Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.Full
+  name: Full
+  href: API13/api/Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.html#Tizen_Multimedia_Remoting_ScreenMirroringDisplayMode_Full
+  commentId: F:Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.Full
+  fullName: Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.Full
+  nameWithType: ScreenMirroringDisplayMode.Full
+- uid: Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.LetterBox
+  name: LetterBox
+  href: API13/api/Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.html#Tizen_Multimedia_Remoting_ScreenMirroringDisplayMode_LetterBox
+  commentId: F:Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.LetterBox
+  fullName: Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.LetterBox
+  nameWithType: ScreenMirroringDisplayMode.LetterBox
+- uid: Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.OriginOrLetterBox
+  name: OriginOrLetterBox
+  href: API13/api/Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.html#Tizen_Multimedia_Remoting_ScreenMirroringDisplayMode_OriginOrLetterBox
+  commentId: F:Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.OriginOrLetterBox
+  fullName: Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.OriginOrLetterBox
+  nameWithType: ScreenMirroringDisplayMode.OriginOrLetterBox
+- uid: Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.OriginSize
+  name: OriginSize
+  href: API13/api/Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.html#Tizen_Multimedia_Remoting_ScreenMirroringDisplayMode_OriginSize
+  commentId: F:Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.OriginSize
+  fullName: Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.OriginSize
+  nameWithType: ScreenMirroringDisplayMode.OriginSize
 - uid: Tizen.Multimedia.Remoting.ScreenMirroringError
   name: ScreenMirroringError
   href: API13/api/Tizen.Multimedia.Remoting.ScreenMirroringError.html
