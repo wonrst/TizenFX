@@ -116975,7 +116975,7 @@
       "output": {
         ".html": {
           "relative_path": "API13/api/Tizen.Multimedia.Remoting.ScreenMirroring.html",
-          "hash": "9hwHiAHnzpFEK9fDHZWQkxdsewROxBhNO1LVRrHY/EE="
+          "hash": "R/vWuunTgv09oxPcOoJHvkXx3KUfRdjdc9+whXMEa3o="
         }
       },
       "is_incremental": false,
@@ -116988,7 +116988,7 @@
       "output": {
         ".html": {
           "relative_path": "API13/api/Tizen.Multimedia.Remoting.ScreenMirroringAudioCodec.html",
-          "hash": "9OduFhgTUI47b4qHTRdOZiISw91TXiWuw2fta12l8Z8="
+          "hash": "ATPAGmjW8LqjCo93x3V30u4qh3Lnx7fduvIw8DAnrY4="
         }
       },
       "is_incremental": false,
@@ -117014,7 +117014,7 @@
       "output": {
         ".html": {
           "relative_path": "API13/api/Tizen.Multimedia.Remoting.ScreenMirroringDeviceType.html",
-          "hash": "UweCEqm2IqSsZ9oy1Y/S+zuwU5nUdWjxzvmFUK0gBv8="
+          "hash": "bfu7j+YvvV2i78zG/8mEm4x2JQUR1vZ+3yAT3LKNGG4="
         }
       },
       "is_incremental": false,
@@ -117027,7 +117027,7 @@
       "output": {
         ".html": {
           "relative_path": "API13/api/Tizen.Multimedia.Remoting.ScreenMirroringDisplayMode.html",
-          "hash": "q9b/pgA27YRuWtroLrj2tymMRsm6kNHarl30YAfl640="
+          "hash": "uHJqzxJI1s01yo1QldYLMRBTAuQOIP1VnbVSNIukOFw="
         }
       },
       "is_incremental": false,
@@ -117040,7 +117040,7 @@
       "output": {
         ".html": {
           "relative_path": "API13/api/Tizen.Multimedia.Remoting.ScreenMirroringError.html",
-          "hash": "qSys8JTsM+ExSNjFidfLlUBOEeDl9KpG4+TBAAc01ZM="
+          "hash": "IEeNwTP6jlKnFYmWO+Lb3MaqmFecBS374/u9oumylI0="
         }
       },
       "is_incremental": false,
@@ -117053,7 +117053,7 @@
       "output": {
         ".html": {
           "relative_path": "API13/api/Tizen.Multimedia.Remoting.ScreenMirroringErrorOccurredEventArgs.html",
-          "hash": "CmcRRck2SydEtFO5EaaPl98VWEbjeJOPGKOT835GvTs="
+          "hash": "2375/e4RRnWkqCEmSM2OS+s0kQjbjk/sJKHpgTK4yu4="
         }
       },
       "is_incremental": false,
@@ -117066,7 +117066,7 @@
       "output": {
         ".html": {
           "relative_path": "API13/api/Tizen.Multimedia.Remoting.ScreenMirroringResolutions.html",
-          "hash": "rhJfljImiA/J45gMbQrj0shhnZ1t5hpBJs4UsrvBIYc="
+          "hash": "e09mwgyN1uF/B5KBn9shaaJW7gu+5yrTA7fh58rtIeE="
         }
       },
       "is_incremental": false,
@@ -117079,7 +117079,7 @@
       "output": {
         ".html": {
           "relative_path": "API13/api/Tizen.Multimedia.Remoting.ScreenMirroringState.html",
-          "hash": "NZcLD2MxX1GQNSozeAAHP43mfMOAf+Q2bmihLQxuRsI="
+          "hash": "3Ez1J/7ivSVcjwAYYy180YJwQSxLOC6eSJlMMzFFXhQ="
         }
       },
       "is_incremental": false,
@@ -117092,7 +117092,7 @@
       "output": {
         ".html": {
           "relative_path": "API13/api/Tizen.Multimedia.Remoting.ScreenMirroringStateChangedEventArgs.html",
-          "hash": "xwC15Opap6MGLARU4NJeNG3FQ7eZvdHWWOwvrLEUCE0="
+          "hash": "g8qHkeSjxwiw58UqMQMXMjLsWj47K0I0jGyIQ8Zmh04="
         }
       },
       "is_incremental": false,
@@ -117105,7 +117105,7 @@
       "output": {
         ".html": {
           "relative_path": "API13/api/Tizen.Multimedia.Remoting.ScreenMirroringVideoCodec.html",
-          "hash": "wPuR0w96CW/3INpjWe45EUxEul6pRu1PKp+UITH2qPc="
+          "hash": "RnS2+SNLMBoOl68+tUvH8Y18DWGtLU7srA6t09FWHxQ="
         }
       },
       "is_incremental": false,
