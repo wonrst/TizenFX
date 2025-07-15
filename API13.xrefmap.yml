@@ -115522,6 +115522,19 @@ references:
   fullName.vb: Tizen.NUI.Animation.New
   nameWithType: Animation.Animation
   nameWithType.vb: Animation.New
+- uid: Tizen.NUI.Animation.AliveCount
+  name: AliveCount
+  href: API13/api/Tizen.NUI.Animation.html#Tizen_NUI_Animation_AliveCount
+  commentId: P:Tizen.NUI.Animation.AliveCount
+  fullName: Tizen.NUI.Animation.AliveCount
+  nameWithType: Animation.AliveCount
+- uid: Tizen.NUI.Animation.AliveCount*
+  name: AliveCount
+  href: API13/api/Tizen.NUI.Animation.html#Tizen_NUI_Animation_AliveCount_
+  commentId: Overload:Tizen.NUI.Animation.AliveCount
+  isSpec: "True"
+  fullName: Tizen.NUI.Animation.AliveCount
+  nameWithType: Animation.AliveCount
 - uid: Tizen.NUI.Animation.AnimateBetween(Tizen.NUI.Animatable,System.String,Tizen.NUI.KeyFrames,System.Int32,System.Int32,Tizen.NUI.Animation.Interpolation,Tizen.NUI.AlphaFunction)
   name: AnimateBetween(Animatable, string, KeyFrames, int, int, Interpolation, AlphaFunction)
   href: API13/api/Tizen.NUI.Animation.html#Tizen_NUI_Animation_AnimateBetween_Tizen_NUI_Animatable_System_String_Tizen_NUI_KeyFrames_System_Int32_System_Int32_Tizen_NUI_Animation_Interpolation_Tizen_NUI_AlphaFunction_
