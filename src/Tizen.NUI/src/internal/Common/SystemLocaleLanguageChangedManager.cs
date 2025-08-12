@@ -86,6 +86,10 @@ namespace Tizen.NUI
                     try
                     {
                         localeLanguage = SystemSettings.LocaleLanguage;
+                        if (string.IsNullOrEmpty(localeLanguage))
+                        {
+                            localeLanguage = defaultLocaleLanguage;
+                        }
                     }
                     catch (Exception e)
                     {
